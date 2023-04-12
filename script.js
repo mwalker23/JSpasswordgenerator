@@ -1,21 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-var passwordLength = 8 <=15;
+var passwordLength = 8;
 var symbols =["!","@","#","$","%"] 
 //console.log(symbols);
-var lowerLetters = ["a,c,d,e,f,g,h,i,j,k,l,n,m,o,p,q,r,s,t,u,v,w,x,y,z"];
+var lowerLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","n","m","o","p","q","r","s","t","u","v","w","x","y","z"];
 //console.log(lowerLetters);
-var upperLetters =["A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z"];
+var upperLetters =["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 //console.log(upperLetters);
-var numbers = ["0,1,2,3,4,5,6,7,8,9"];
+var numbers = [0,1,2,3,4,5,6,7,8,9];
 //console.log(numbers);
-var userChoiceOfPassword = [];
- var Newpassword= [];
 
 
 // Write password to the #password input
 function generatePassword(){
+  var userChoiceOfPassword = [];
   var passwordLength = prompt("How many characters (8-15) would you like your password to contain?");
   //console.log(passwordLength);
 
@@ -25,7 +24,7 @@ function generatePassword(){
   else {
     var includeNumbers= confirm ("Would you like to include numbers?");
     if(includeNumbers === true){
-      userChoiceOfPassword.push(...userChoiceOfPassword, ...numbers)
+      userChoiceOfPassword.push(...numbers) // spread-operator
     }
     console.log('user choice with numbers: ', userChoiceOfPassword);
 
@@ -51,12 +50,15 @@ function generatePassword(){
       alert("PLEASE SELECT ONE CHARACTER TYPE");
     }
 
+console.log(userChoiceOfPassword);
 
+   var password = "";
     for (var i = 0; i < passwordLength; i++) {
       console.log("number of characters the user chose: ", passwordLength);
 
-      password=  + userChoiceOfPassword.length;
+      password += userChoiceOfPassword[Math.floor(Math.random()* userChoiceOfPassword.length)];
     }
+    console.log(password);
     return password;
 
   }
